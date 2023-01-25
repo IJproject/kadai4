@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Bookers2</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,6 +11,76 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="/"><span>Bookers</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <%= link_to root_path, class: 'nav-link text-light' do %>
+                <i class="fas fa-home d-inline"></i>
+                <p class="d-inline">Home</p>
+              <% end %>
+            </li>
+            <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to users_path, class: 'nav-link text-light' do %>
+                <i class="fas fa-users d-inline"></i>
+                <p class="d-inline">Users</p>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to books_path, class: 'nav-link text-light' do %>
+                <i class="fas fa-book-open d-inline"></i>
+                <p class="d-inline">Books</p>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
+                <i class="fas fa-sign-out-alt d-inline"></i>
+                <p class="d-inline">Log out</p>
+              <% end %>
+            </li>
+            <% else %>
+            <li class="nav-item">
+              <%= link_to home_about_path, class: 'nav-link text-light' do %>
+                <i class="fas fa-link d-inline"></i>
+                <p class="d-inline">About</p>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>
+                <i class="fas fa-user-plus d-inline"></i>
+                <p class="d-inline">Sign up</p>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to new_user_session_path, class: 'nav-link text-light' do %>
+                <i class="fas fa-sign-in-alt d-inline"></i>
+                <p class="d-inline">Log in</p>
+              <% end %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      </nav>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+      <div class="container mt-5">
+        <div class="row">
+          <div class="mx-auto">
+            <p>CopyRight Infratop.inc</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
