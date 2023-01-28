@@ -11,13 +11,17 @@
             <th>Opinion</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
+        <% @books.each do |book| %>
+          <% if @user.id == book.user_id %>
+            <tbody>
+              <tr>
+                <td><%= image_tag @user.get_image(80,80) %></td>
+                <td><%= book.title %></td>
+                <td><%= link_to "Show", user_path(@user) %></td>
+              </tr>
+            </tbody>
+          <% end %>
+        <% end %>
       </table>
     </div>
   </div>
