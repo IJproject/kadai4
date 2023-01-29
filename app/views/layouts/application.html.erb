@@ -21,9 +21,16 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <%= link_to root_path, class: 'nav-link text-light' do %>
-                <i class="fas fa-home d-inline"></i>
-                <p class="d-inline">Home</p>
+              <% if user_signed_in? %>
+                <%= link_to user_path(current_user.id), class: 'nav-link text-light' do %>
+                  <i class="fas fa-home d-inline"></i>
+                  <p class="d-inline">Home</p>
+                <% end %>
+              <% else %>
+                <%= link_to root_path, class: 'nav-link text-light' do %>
+                  <i class="fas fa-home d-inline"></i>
+                  <p class="d-inline">Home</p>
+                <% end %>
               <% end %>
             </li>
             <% if user_signed_in? %>
