@@ -7,12 +7,12 @@
       <p>you can share and exchange your opinions , inpressions , and emotions</p>
       <p>about various books!</p>
       <div class="mx-auto col-10">
-        <%= link_to new_user_session_path, class: "row text-decoration-none" do %>
-          <button type="button" class="btn btn-info btn-sm btn-block mb-3 text-light">Log in</button>
-        <% end %>
-        <%= link_to new_user_registration_path, class: "row text-decoration-none" do %>
-          <button type="button" class="btn btn-success btn-sm btn-block text-light">Sign up</button>
-        <% end %>
+        <div class="row">
+          <%= link_to "Log in", new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3 text-light text-decoration-none" %>
+        </div>
+        <div class="row">
+          <%= link_to "Sign up", new_user_registration_path, class: "btn btn-success btn-sm btn-block text-light text-decoration-none" %>
+        </div>
       </div>
     </div>
   </div>
